@@ -1,0 +1,26 @@
+<h1>Coupon Form</h1>
+<%= form_for(@coupon) do |f| %>
+
+<label>Coupon Code:</label><br>
+<%= text_field_tag :coupon_code %><br>
+
+<label>Store:</label><br>
+<%= text_field_tag :store %><br>
+
+  <% if @coupon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
+
+      <ul>
+      <% @coupon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
